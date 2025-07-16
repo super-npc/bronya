@@ -23,7 +23,7 @@ public class GithubWorkflowsClient {
 
     public GithubWorkflowsClient() {
         GithubAuthInterceptor authInterceptor = new GithubAuthInterceptor(
-            "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");
+            "");
         this.api = new ApiClient("https://api.github.com/", authInterceptor).createService(GithubWorkflowsApi.class);
     }
 
