@@ -1,0 +1,15 @@
+server:
+  port: 9080
+
+spring:
+  application:
+    name: bronya-admin-server
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        namespace: bronya-${spring.profiles.active}
+          # 如果只消费服务，不作为服务提供方，倒是可以设置成false，减少开销
+        server-addr: http://139.199.207.29:8848
+        register-enabled: true

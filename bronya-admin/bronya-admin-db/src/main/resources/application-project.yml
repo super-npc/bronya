@@ -1,0 +1,76 @@
+project:
+  proxy:
+    enabled: true
+    type: SOCKS
+    ip: 127.0.0.1
+    port: 55131
+  media-cnf:
+    file-platform-type: local
+
+togglz:
+  console:
+    enabled: true
+    path: /togglz
+    secured: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus  # 仅开放健康检查
+  #      base-path: /actuator # 如果你自定义了 Actuator 的路径，需要配置这里
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      access: READ_ONLY
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: INFO # debug 前端参数的打印
+    com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor: INFO
+    com.baomidou.mybatisplus: DEBUG
+    com.alibaba.cola.catchlog: DEBUG
+  config: classpath:logback-config.xml
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+#decorator:
+#  datasource:
+#    p6spy:
+#      # 日志格式
+#      log-format: "\ntime:%(executionTime) || sql:%(sql)\n"
+#      # 自定义日志类
+#      logging: custom
+#      custom-appender-class: bronya.admin.module.p6spy.StdoutLogger
+
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+
+
+spring:
+  #  main:
+  #    lazy-initialization: true # SpringBoot3.2引入了更完善的懒加载机制,对于大型应用可显著减少启动时间。 ps: 禁止,会导致启动无法成功
+  threads:
+    virtual:
+      enabled: true
+  cloud:
+    config:
+      import-check:
+        enabled: false # 不需要检测nacos,sysEnv系统变量用的
+  datasource:
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-timeout: 5000
+      connection-test-query: SELECT 1

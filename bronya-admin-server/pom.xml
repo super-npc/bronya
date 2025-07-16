@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cc.bronya</groupId>
+        <artifactId>bronya</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>cc.melody</groupId>
+    <artifactId>bronya-admin-server</artifactId>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <jib.version>3.4.5</jib.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>cc.bronya</groupId>
+            <artifactId>bronya-third</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <resources>
+            <resource>
+                <!-- 定义可被替换的文件 -->
+                <directory>src/main/resources</directory>
+                <includes>
+                    <!--                    <include>**/*.txt</include>-->
+                    <include>**/*</include>
+                    <!--                    <include>**/*.xml</include>-->
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <argLine>--enable-preview</argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>jib</id>
+            <build>
+                <plugins>
+                    <!-- mvn package -Pjib -->
+                    <plugin>
+                        <!-- 废弃之前的docker编译为镜像 mvn clean package -Dmaven.test.skip=true -->
+                        <groupId>com.google.cloud.tools</groupId>
+                        <artifactId>jib-maven-plugin</artifactId>
+                        <version>${jib.version}</version>
+                        <configuration>
+                            <from>
+                                <image>openjdk:21-slim</image>
+                            </from>
+                            <to>
+                                <image>registry.us-west-1.aliyuncs.com/since/bronya-admin-server</image>
+                                <tags>
+                                    <tag>${project.version}</tag>
+                                    <tag>latest</tag>
+                                </tags>
+                                <auth>
+                                    <username>tbhykrs2jjks8@aliyun.com</username>
+                                    <password>2@RJR253erDLKdp</password>
+                                </auth>
+                            </to>
+                            <container>
+                                <appRoot>/home</appRoot>
+                                <workingDirectory>/home</workingDirectory>
+                                <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+                                <mainClass>bronya.admin.server.BronyaAdminServerApp</mainClass>
+                                <!--                        <ports>-->
+                                <!--                            <port>61013</port>-->
+                                <!--                            <port>5005</port>-->
+                                <!--                        </ports>-->
+                                <args>
+                                    <!--                                    <arg>&#45;&#45;spring.profiles.active=prd</arg>-->
+                                    <!--suppress UnresolvedMavenProperty -->
+                                    <arg>--spring.profiles.active=${env.SPRING_PROFILES_ACTIVE}</arg>
+                                </args>
+                                <jvmFlags>
+                                    <jvmFlag>-agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n
+                                    </jvmFlag>
+                                    <!-- JaCoCo助您毁灭线上僵尸代码 -->
+                                    <!--                            <jvmFlag>-javaagent:/soft/jacoco/lib/jacocoagent.jar=includes=bennett.*,output=tcpserver,port=8840,address=127.0.0.1 -Xverify:none</jvmFlag>-->
+                                    <jvmFlag>--enable-preview</jvmFlag>
+                                    <jvmFlag>-XX:SharedArchiveFile=/home/jsa/sharedArchive.jsa</jvmFlag>
+                                    <!--                            <jvmFlag>-Xms512m</jvmFlag>-->
+                                    <jvmFlag>-Xdebug</jvmFlag>
+                                    <jvmFlag>--add-opens=java.base/sun.reflect.annotation=ALL-UNNAMED</jvmFlag>
+                                    <jvmFlag>--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</jvmFlag>
+                                    <jvmFlag>--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</jvmFlag>
+                                    <jvmFlag>--add-exports=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</jvmFlag>
+                                    <jvmFlag>--add-opens=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</jvmFlag>
+                                    <jvmFlag>--add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</jvmFlag>
+                                    <jvmFlag>--add-opens=java.base/java.lang=ALL-UNNAMED</jvmFlag>
+                                    <jvmFlag>--add-opens=java.base/java.lang.invoke=ALL-UNNAMED</jvmFlag>
+                                    <jvmFlag>--add-opens=java.base/java.math=ALL-UNNAMED</jvmFlag>
+                                    <jvmFlag>--add-opens=java.base/java.util=ALL-UNNAMED</jvmFlag>
+                                    <jvmFlag>--add-opens=java.base/java.time=ALL-UNNAMED</jvmFlag>
+                                </jvmFlags>
+                            </container>
+                            <allowInsecureRegistries>true</allowInsecureRegistries>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

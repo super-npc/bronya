@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bronya.admin.module.db.badge.mapper.BadgeMapper">
+
+    <select id="findBeanCounts" resultType="bronya.admin.module.db.badge.mapper.dto.BeanCountsDto">
+        select bean,count(1) as count from badge where read_status  = 'UNREAD' group by bean
+    </select>
+</mapper>
