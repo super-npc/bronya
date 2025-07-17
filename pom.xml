@@ -148,12 +148,6 @@
                 <artifactId>bronya-admin-liteflow</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>cc.bronya</groupId>
-                <artifactId>olive-component-admin-plantuml</artifactId>
-                <version>${project.version}</version>
-            </dependency>
             <dependency>
                 <groupId>cc.bronya</groupId>
                 <artifactId>bronya-admin-ws-client</artifactId>
@@ -182,11 +176,6 @@
             </dependency>
             <dependency>
                 <groupId>cc.bronya</groupId>
-                <artifactId>olive-starter-user</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cc.bronya</groupId>
                 <artifactId>bronya-starter-db</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -210,46 +199,7 @@
                 <artifactId>bronya-admin-openfeign</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>cc.bronya</groupId>
-                <artifactId>bronya-admin-media</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cc.bronya</groupId>
-                <artifactId>bronya-admin-miniapp</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cc.bronya</groupId>
-                <artifactId>olive-component-admin-rabbit-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cc.bronya</groupId>
-                <artifactId>olive-component-admin-rabbit-mqtt-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cc.bronya</groupId>
-                <artifactId>olive-component-admin-rabbit-mqtt-client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cc.bronya</groupId>
-                <artifactId>olive-component-admin-rabbit-mqtt-server</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cc.bronya</groupId>
-                <artifactId>olive-component-admin-rabbit-rpc-client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cc.bronya</groupId>
-                <artifactId>olive-component-admin-rabbit-rpc-server</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+
             <dependency>
                 <groupId>cc.bronya</groupId>
                 <artifactId>bronya-admin-scheduled</artifactId>
