@@ -14,7 +14,6 @@
     <modules>
         <module>bronya-admin-base</module>
         <module>bronya-admin-scheduled</module>
-        <module>bronya-admin-rabbit</module>
         <module>bronya-admin-miniapp</module>
         <module>bronya-admin-openfeign</module>
         <module>bronya-admin-db</module>

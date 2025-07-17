@@ -222,32 +222,32 @@
             </dependency>
             <dependency>
                 <groupId>cc.bronya</groupId>
-                <artifactId>bronya-admin-rabbit-core</artifactId>
+                <artifactId>olive-component-admin-rabbit-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cc.bronya</groupId>
-                <artifactId>bronya-admin-rabbit-mqtt-core</artifactId>
+                <artifactId>olive-component-admin-rabbit-mqtt-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cc.bronya</groupId>
-                <artifactId>bronya-admin-rabbit-mqtt-client</artifactId>
+                <artifactId>olive-component-admin-rabbit-mqtt-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cc.bronya</groupId>
-                <artifactId>bronya-admin-rabbit-mqtt-server</artifactId>
+                <artifactId>olive-component-admin-rabbit-mqtt-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cc.bronya</groupId>
-                <artifactId>bronya-admin-rabbit-rpc-client</artifactId>
+                <artifactId>olive-component-admin-rabbit-rpc-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cc.bronya</groupId>
-                <artifactId>bronya-admin-rabbit-rpc-server</artifactId>
+                <artifactId>olive-component-admin-rabbit-rpc-server</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
