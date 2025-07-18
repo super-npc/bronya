@@ -43,7 +43,7 @@ public class BronyaAdminDbSiteController {
         SitePage sitePage = siteDto.getSitePage();
         List<MapTree<String>> pages = sitePage.getPages();
 
-        pages.addAll(0, this.customSite()); // 自定义菜单
+//        pages.addAll(0, this.customSite()); // 自定义菜单 todo 后续需要自定义
 
         ResultVO<?> success = ResultVO.success(sitePage);
         success.setCookies(siteDto.getCookies());
