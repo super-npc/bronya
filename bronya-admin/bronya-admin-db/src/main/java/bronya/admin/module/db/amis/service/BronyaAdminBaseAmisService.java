@@ -3,6 +3,8 @@ package bronya.admin.module.db.amis.service;
 import java.lang.reflect.Field;
 import java.util.*;
 
+import com.mybatisflex.core.query.QueryColumn;
+import com.mybatisflex.core.query.QueryOrderBy;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.core.annotation.AnnotationUtil;
 import org.dromara.hutool.core.bean.BeanUtil;
@@ -340,10 +342,11 @@ public class BronyaAdminBaseAmisService {
                 List<String> split = SplitUtil.split(orderBy, StrPool.DOT);
                 String orderClassName = split.getFirst();
                 if (orderClassName.equals(amisBeanDto.getMainClassSimpleName())) {
-                    // 属于当前对象的排序
+                    // 属于当前对象的排序, todo 这里是会被注入的,sqlMap 会检测到
                     String orderDir = MapUtil.getStr(map, "orderDir");
                     boolean asc = "asc".equalsIgnoreCase(orderDir);
                     String orderByCol = split.getLast();
+//                    new QueryOrderBy(new QueryColumn());// todo
                     queryWrapper.orderBy(StrUtil.toUnderlineCase(orderByCol), asc);
                 }
             }
