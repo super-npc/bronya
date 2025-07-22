@@ -61,7 +61,7 @@ public class AmisInputNumber extends AmisComponents {
         int step() default 0;
 
         /** 精度，即小数点后几位，支持 0 和正整数 */
-        int precision() default 0;
+        int precision() default 2;
 
         /** 是否显示上下点击按钮 */
         boolean showSteps() default true;
