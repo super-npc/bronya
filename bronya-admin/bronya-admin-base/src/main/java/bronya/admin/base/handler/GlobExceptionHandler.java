@@ -82,7 +82,7 @@ public class GlobExceptionHandler {
     @ExceptionHandler(SysException.class)
     public ResultVO<?> sysException(SysException e) {
         // 已知系统异常，打印报错信息
-        log.warn("已知系统异常：{} {}", e.getErrCode(), e.getMessage());
+        log.warn(STR."已知系统异常:\{e.getErrCode()}", e);
         return ResultVO.failed(e.getMessage());
     }
 
@@ -99,19 +99,15 @@ public class GlobExceptionHandler {
     }
 
     /**
-     * 1.完整性约束的概念
-     * 在数据库中，完整性约束是用于确保数据一致性和完整性的规则。常见的完整性约束包括：
-     * 主键约束（Primary Key Constraint）：确保表中某列或某几列的值唯一且非空。
-     * 外键约束（Foreign Key Constraint）：确保一个表中的数据必须与另一个表中的数据相关联。
-     * 唯一约束（Unique Constraint）：确保表中某列或某几列的值唯一。
-     * 检查约束（Check Constraint）：确保表中某列的值满足特定条件。
-     * 非空约束（Not Null Constraint）：确保表中某列的值不能为 null。
+     * 1.完整性约束的概念 在数据库中，完整性约束是用于确保数据一致性和完整性的规则。常见的完整性约束包括： 主键约束（Primary Key Constraint）：确保表中某列或某几列的值唯一且非空。 外键约束（Foreign
+     * Key Constraint）：确保一个表中的数据必须与另一个表中的数据相关联。 唯一约束（Unique Constraint）：确保表中某列或某几列的值唯一。 检查约束（Check
+     * Constraint）：确保表中某列的值满足特定条件。 非空约束（Not Null Constraint）：确保表中某列的值不能为 null。
      */
     @ResponseBody
     @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(value = DuplicateKeyException.class)
     public ResultVO<?> duplicateKeyException(DuplicateKeyException ex) {
-        log.info(STR."违反了唯一约束：\{ex.getMessage()}",ex);
+        log.info(STR."违反了唯一约束：\{ex.getMessage()}", ex);
         // 返回统一处理类
         return ResultVO.failed("违反了唯一约束,请联系管理员");
     }
@@ -120,7 +116,7 @@ public class GlobExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(value = DataIntegrityViolationException.class)
     public ResultVO<?> dataIntegrityViolationException(DataIntegrityViolationException ex) {
-        log.warn(STR."数据库操作异常：\{ex.getMessage()}",ex);
+        log.warn(STR."数据库操作异常：\{ex.getMessage()}", ex);
         // 返回统一处理类
         return ResultVO.failed("数据异常,请联系管理员");
     }
@@ -130,7 +126,7 @@ public class GlobExceptionHandler {
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
     public ResultVO<?> paramException(MissingServletRequestParameterException ex) {
         String msg = STR."缺少参数:\{ex.getParameterName()},类型:\{ex.getParameterType()}";
-        log.info(msg);
+            log.info(msg);
         // 返回统一处理类
         return ResultVO.failed(msg);
     }
@@ -140,7 +136,7 @@ public class GlobExceptionHandler {
      */
     @ExceptionHandler(value = Exception.class)
     public ResultVO<?> exception(Exception ex) {
-        log.error("未知系统异常： {}", ex.getMessage(), ex);
+        log.error("未知系统异常", ex);
         // 返回统一处理类
         return ResultVO.failed(ex.getMessage());
     }
