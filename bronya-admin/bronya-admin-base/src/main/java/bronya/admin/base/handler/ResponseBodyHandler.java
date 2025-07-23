@@ -55,7 +55,8 @@ public class ResponseBodyHandler implements ResponseBodyAdvice<Object> {
     }
 
     private boolean isActuatorRequest(ServerHttpRequest request) {
-        List<String> strings = Lists.newArrayList("/favicon.ico", "/actuator", "/koTime");
+        // /doLogin 是sa-token的快捷登录插件
+        List<String> strings = Lists.newArrayList("/favicon.ico", "/actuator", "/koTime","/doLogin");
         if (request instanceof ServletServerHttpRequest httpRequest) {
             return strings.stream().anyMatch(temp -> httpRequest.getServletRequest().getRequestURI().startsWith(temp));
         }

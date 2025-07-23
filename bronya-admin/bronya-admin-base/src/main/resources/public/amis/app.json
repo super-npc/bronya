@@ -1,7 +1,7 @@
 {
   "type": "app",
   "brandName": "后台管理",
-  "logo": "/static/icon/柠檬.svg",
+  "logo": "/icon/柠檬.svg",
   "id": "the_app",
   "data": {
     "init": {
