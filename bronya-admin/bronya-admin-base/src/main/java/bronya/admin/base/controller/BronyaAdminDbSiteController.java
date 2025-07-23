@@ -56,7 +56,7 @@ public class BronyaAdminDbSiteController {
         TreeNode<String> dashboard = new TreeNode<>("dashboard", "main", "dashboard", "0");
         Map<String, Object> extra = Maps.newHashMap();
         extra.put("url", "/");
-        extra.put("icon", "/static/icon/主页.svg");
+        extra.put("icon", "/icon/主页.svg");
         extra.put("schemaApi", "get:/public/amis/dashboard.json");
 //        extra.put("badge",5);
 //        extra.put("badgeClassName","bg-info");
@@ -65,7 +65,7 @@ public class BronyaAdminDbSiteController {
         TreeNode<String> personal = new TreeNode<>("personal", "main", "个人中心", "1");
         Map<String, Object> personalExtra = Maps.newHashMap();
         personalExtra.put("url", "/personal");
-        personalExtra.put("icon", "/static/icon/主页.svg");
+        personalExtra.put("icon", "/icon/主页.svg");
         personalExtra.put("schemaApi", "get:/public/amis/dashboard.json");
 //        extra.put("badge",8);
 //        extra.put("badgeClassName","bg-info");

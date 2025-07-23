@@ -87,7 +87,7 @@ public class BronyaAdminBaseSiteService {
                     String level1url = STR."\{groupUrl}/\{idMenu}/\{menuUrl}";
                     extra.put("url", level1url);
                     String icon = RandomUtil.randomEle(icons);
-                    extra.put("icon", STR."/static/icon/\{icon}");
+                    extra.put("icon", STR."/icon/\{icon}");
                     beanCounts.stream().filter(temp -> temp.getBean().equals(tableClass.getSimpleName())).findFirst()
                         .ifPresent(temp -> {
                             extra.put("badge", temp.getCount());
@@ -102,7 +102,7 @@ public class BronyaAdminBaseSiteService {
                 TreeNode<String> nodeMenu = new TreeNode<>(idMenu, idGroup, menuStr, idMenu);
                 Map<String, Object> extra = Maps.newHashMap();
                 String icon = RandomUtil.randomEle(icons);
-                extra.put("icon", STR."/static/icon/\{icon}");
+                extra.put("icon", STR."/icon/\{icon}");
                 int sum = counts.stream().mapToInt(Integer::intValue).sum();
                 if (sum > 0) {
                     extra.put("badge", sum);

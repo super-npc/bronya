@@ -59,7 +59,7 @@ public class BronyaBaseMvcConfigure implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         WebMvcConfigurer.super.addViewControllers(registry);
         registry.addRedirectViewController("/h3", "/console/login.do?language=zh_CN");
-        registry.addRedirectViewController("/", "/static/index.html");
+        registry.addRedirectViewController("/", "/index.html");
     }
 
     @Override
@@ -71,7 +71,7 @@ public class BronyaBaseMvcConfigure implements WebMvcConfigurer {
             .addResourceLocations(STR."\{ResourceUtils.CLASSPATH_URL_PREFIX}/static/amis/").setCachePeriod(31556926);
         registry.addResourceHandler("/public/**")
             .addResourceLocations(STR."\{ResourceUtils.CLASSPATH_URL_PREFIX}/public/").setCachePeriod(31556926);
-        registry.addResourceHandler("/static/**")
+        registry.addResourceHandler("/**")
             .addResourceLocations(STR."\{ResourceUtils.CLASSPATH_URL_PREFIX}/static/").setCachePeriod(31556926);
 
         registry.addResourceHandler("/json/**")

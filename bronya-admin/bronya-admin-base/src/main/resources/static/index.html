@@ -12,16 +12,16 @@
     <link
             rel="stylesheet"
             title="default"
-            href="/static/amis/sdk.css"
+            href="/amis/sdk.css"
     />
-    <link rel="stylesheet" href="/static/amis/helper.css"/>
+    <link rel="stylesheet" href="/amis/helper.css"/>
     <link
             rel="stylesheet"
-            href="/static/amis/iconfont.css"
+            href="/amis/iconfont.css"
     />
-    <script src="/static/amis/sdk.js"></script>
-    <script src="/static/vue.global.js"></script>
-    <script src="/static/history.js"></script>
+    <script src="/amis/sdk.js"></script>
+    <script src="/vue.global.js"></script>
+    <script src="/history.js"></script>
     <style>
         html,
         body,
@@ -147,7 +147,7 @@
                     //     const token = localStorage.getItem('token');
                     //     if (!token) {
                     //         console.log("token 为null或空字符串，跳转到登录页面");
-                    //         location.href = '/static/login/index.html?url=' + thisUrl;
+                    //         location.href = '/login/index.html?url=' + thisUrl;
                     //     }
                     //     api.headers['token'] = token;
                     // }
@@ -157,7 +157,7 @@
                     if (response.hasOwnProperty('status')) {
                         if (response['status'] === 401) {
                             // log.error("没有登录,需要跳转到登录页面2")
-                            location.href = '/static/login/index.html?url=' + thisUrl;
+                            location.href = '/login/index.html?url=' + thisUrl;
                             return;
                         }
                     }
@@ -185,7 +185,7 @@
                     //         // 处理需要登录的逻辑，例如跳转到登录页面
                     //         const token = localStorage.getItem('token');
                     //         if (!token) {
-                    //             location.href = '/static/login/index.html?url=' + thisUrl;
+                    //             location.href = '/login/index.html?url=' + thisUrl;
                     //         }
                     //     }
                     // }
