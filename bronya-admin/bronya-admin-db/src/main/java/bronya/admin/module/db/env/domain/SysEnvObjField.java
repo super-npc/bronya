@@ -41,11 +41,11 @@ import lombok.experimental.FieldNameConstants;
 @EqualsAndHashCode(callSuper = true)
 @FieldNameConstants
 @Amis(extBean = SysEnvObjField.EnvPropertyExt.class, dataProxy = SysEnvObjFieldProxy.class)
-@AmisPage(menu = @Menu(module = "系统", group = "数据管理", menu = "系统变量"),
+@AmisPage(menu = @Menu(show = false, module = "系统", group = "数据管理", menu = "系统变量"),
         autoGenerateFilter = @AmisPage.AutoGenerateFilter(defaultCollapsed = false, columnsNum = 5),
         operation = @Operation(optBtns = {@Operation.OptBtn(name = "刷新数据", level = Operation.BtnLevelType.info,
                 method = Method.GET, batch = true, url = "/admin/")}),
-        btns = @Btns(add = false, delete = false))
+        btns = @Btns(add = false, delete = false,detail = false))
 @TableIndexes({@TableIndex(
         indexFields = {@IndexField(field = SysEnvObjField.Fields.envObjId, sort = IndexSortTypeEnum.DESC),
                 @IndexField(field = SysEnvObjField.Fields.dataKey, sort = IndexSortTypeEnum.DESC)},

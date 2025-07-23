@@ -34,7 +34,7 @@ import lombok.experimental.FieldNameConstants;
 @Accessors(chain = true)
 @FieldNameConstants
 @Amis(extBean = Badge.BadgeExt.class, dataProxy = BadgeProxy.class)
-@AmisPage(menu = @Menu(module = "系统", group = "数据管理", menu = "菜单"),
+@AmisPage(menu = @Menu(show = false, module = "系统", group = "数据管理", menu = "菜单"),
     orderBys = {@AmisPage.OrderBy(cols = {Badge.Fields.readStatus}, type = OrderByType.ASC),
         @AmisPage.OrderBy(cols = {Badge.Fields.id}, type = OrderByType.ASC)},
     btns = @Btns(add = false, edit = false, delete = false),

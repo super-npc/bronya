@@ -38,7 +38,7 @@ import java.util.List;
 @Amis(extBean = SysEnvObj.SysEnvObjExt.class, dataProxy = SysEnvObjProxy.class)
 @AmisPage(menu = @Menu(module = "系统", group = "数据管理", menu = "系统变量"),
         autoGenerateFilter = @AmisPage.AutoGenerateFilter(defaultCollapsed = false, columnsNum = 5),
-        btns = @Btns(add = false, edit = false, delete = false))
+        btns = @Btns(add = false, edit = false, delete = false,detail = false))
 @TableIndexes({@TableIndex(indexFields = {@IndexField(field = SysEnvObj.Fields.objName, sort = IndexSortTypeEnum.DESC)},
         type = IndexTypeEnum.UNIQUE)})
 public class SysEnvObj {
