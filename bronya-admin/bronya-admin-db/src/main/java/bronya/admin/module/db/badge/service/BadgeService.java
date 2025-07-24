@@ -47,7 +47,7 @@ public class BadgeService {
         });
     }
 
-    public boolean toReadAll(Class<?> cla){
+    public boolean toReadAll(Class<?> cla) {
         return badgeRepository.readAll(cla);
     }
 
@@ -61,12 +61,12 @@ public class BadgeService {
         }, new FutureCallback<>() {
             @Override
             public void onSuccess(Boolean flag) {
-                log.info("标记读取徽标完成:{},主键:{}", cla.getSimpleName(), primaryKey);
+                log.debug("标记读取徽标完成:{},主键:{}", cla.getSimpleName(), primaryKey);
             }
 
             @Override
             public void onFailure(@NotNull Throwable t) {
-                log.info(STR."标记读取徽标异常:\{cla.getSimpleName()},主键:\{primaryKey}", t);
+                log.warn(STR."标记读取徽标异常:\{cla.getSimpleName()},主键:\{primaryKey}", t);
             }
         });
     }
