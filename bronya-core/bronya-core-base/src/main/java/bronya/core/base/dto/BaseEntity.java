@@ -7,6 +7,7 @@ import org.dromara.mpe.autofill.annotation.InsertFillTime;
 import org.dromara.mpe.autofill.annotation.InsertUpdateFillTime;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author don
@@ -16,13 +17,13 @@ import java.io.Serializable;
 public class BaseEntity<ID_TYPE extends Serializable, TIME_TYPE> {
 
     @ColumnComment("创建人")
-    protected ID_TYPE createBy;
+    private ID_TYPE createBy;
     @ColumnComment("最后更新人")
-    protected ID_TYPE updateBy;
+    private ID_TYPE updateBy;
     @InsertFillTime
     @ColumnComment("创建时间")
-    protected TIME_TYPE createTime;
+    private Date createTime;
     @InsertUpdateFillTime
     @ColumnComment("最后更新时间")
-    protected TIME_TYPE updateTime;
+    private Date updateTime;
 }
