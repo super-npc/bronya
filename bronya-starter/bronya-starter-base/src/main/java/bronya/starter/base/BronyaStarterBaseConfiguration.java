@@ -16,8 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 @EnableWebMvc
 // @EnableAutoTable(basePackages = {"bronya"}) // 需要在具体项目上设置,这里设置会有可能无法扫描到父项目的table类
 @AutoConfiguration
-@ComponentScan({"bronya", "org.dromara.hutool.extra.spring", "com.alibaba.cola"})
-@MapperScan({"bronya"})
+@ComponentScan({"bronya","olive", "org.dromara.hutool.extra.spring", "com.alibaba.cola"})
+@MapperScan({"bronya","olive",})
 @RestControllerAdvice(basePackageClasses = {GlobExceptionHandler.class})
 @RequiredArgsConstructor
 public class BronyaStarterBaseConfiguration {

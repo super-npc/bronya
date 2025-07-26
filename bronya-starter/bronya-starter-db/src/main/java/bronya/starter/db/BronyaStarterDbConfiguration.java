@@ -16,8 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 @EnableWebMvc
 //@EnableAutoTable(basePackages = {"bronya"})
 @AutoConfiguration
-@ComponentScan({"bronya", "org.dromara.hutool.extra.spring", "com.alibaba.cola"})
-@MapperScan({"bronya"})
+@ComponentScan({"bronya","olive", "org.dromara.hutool.extra.spring", "com.alibaba.cola"})
+@MapperScan({"bronya","olive",})
 @RestControllerAdvice(basePackageClasses = {GlobExceptionHandler.class})
 public class BronyaStarterDbConfiguration {
     @PostConstruct
