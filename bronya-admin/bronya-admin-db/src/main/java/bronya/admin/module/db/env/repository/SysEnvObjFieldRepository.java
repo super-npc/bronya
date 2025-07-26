@@ -3,7 +3,7 @@ package bronya.admin.module.db.env.repository;
 import java.lang.reflect.Field;
 
 import org.dromara.hutool.core.lang.Assert;
-import org.dromara.mpe.base.repository.BaseRepository;
+import com.baomidou.mybatisplus.extension.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class SysEnvObjFieldRepository extends BaseRepository<SysEnvObjFieldMapper, SysEnvObjField> {
+public class SysEnvObjFieldRepository extends CrudRepository<SysEnvObjFieldMapper, SysEnvObjField> {
 
     public SysEnvObjField find(SysEnvObj envObj, Field field) {
         AmisField amisField = field.getAnnotation(AmisField.class);

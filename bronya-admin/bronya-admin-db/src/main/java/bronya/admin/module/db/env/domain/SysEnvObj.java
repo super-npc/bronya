@@ -20,8 +20,8 @@ import org.dromara.autotable.annotation.enums.IndexSortTypeEnum;
 import org.dromara.autotable.annotation.enums.IndexTypeEnum;
 import org.dromara.autotable.annotation.mysql.MysqlCharset;
 import org.dromara.autotable.annotation.mysql.MysqlTypeConstant;
-import org.dromara.mpe.annotation.Exclude;
-import org.dromara.mpe.annotation.InsertFillTime;
+import org.dromara.mpe.autofill.annotation.InsertFillTime;
+import org.dromara.mpe.autofill.annotation.Exclude;
 import org.dromara.mpe.autotable.annotation.Column;
 import org.dromara.mpe.autotable.annotation.ColumnId;
 import org.dromara.mpe.autotable.annotation.Table;
@@ -36,11 +36,8 @@ import java.util.List;
 @MysqlCharset(charset = "utf8mb4", collate = "utf8mb4_general_ci")
 @FieldNameConstants
 @Amis(extBean = SysEnvObj.SysEnvObjExt.class, dataProxy = SysEnvObjProxy.class)
-@AmisPage(menu = @Menu(module = "系统", group = "数据管理", menu = "系统变量"),
-        autoGenerateFilter = @AmisPage.AutoGenerateFilter(defaultCollapsed = false, columnsNum = 5),
-        btns = @Btns(add = false, edit = false, delete = false,detail = false))
-@TableIndexes({@TableIndex(indexFields = {@IndexField(field = SysEnvObj.Fields.objName, sort = IndexSortTypeEnum.DESC)},
-        type = IndexTypeEnum.UNIQUE)})
+@AmisPage(menu = @Menu(module = "系统", group = "数据管理", menu = "系统变量"), autoGenerateFilter = @AmisPage.AutoGenerateFilter(defaultCollapsed = false, columnsNum = 5), btns = @Btns(add = false, edit = false, delete = false, detail = false))
+@TableIndexes({@TableIndex(indexFields = {@IndexField(field = SysEnvObj.Fields.objName, sort = IndexSortTypeEnum.DESC)}, type = IndexTypeEnum.UNIQUE)})
 public class SysEnvObj {
     @ColumnId(mode = IdType.AUTO, comment = "id主键", type = MysqlTypeConstant.BIGINT, length = 32)
     @AmisField(toggled = false)
@@ -60,14 +57,12 @@ public class SysEnvObj {
     private Date createTime;
 
     @Exclude
-    @BindOne2Many(entity = SysEnvObjField.class, condition = @JoinCondition(selfField = SysEnvObjField.Fields.id,
-            joinField = SysEnvObjField.Fields.envObjId, joinFieldLabel = SysEnvObjField.Fields.dataKey))
+    @BindOne2Many(entity = SysEnvObjField.class, condition = @JoinCondition(selfField = SysEnvObjField.Fields.id, joinField = SysEnvObjField.Fields.envObjId, joinFieldLabel = SysEnvObjField.Fields.dataKey))
     private List<SysEnvObjField> sysEnvObjFieldList;
 
     @Data
     public static class SysEnvObjExt {
-        @AmisField(comment = "环境变量", json = @AmisJson.Json(levelExpand = 2, placeholder = "未配置环境变量"),
-                table = @AmisFieldView(type = AmisFieldView.ViewType.jsonSchema))
+        @AmisField(comment = "环境变量", json = @AmisJson.Json(levelExpand = 2, placeholder = "未配置环境变量"), table = @AmisFieldView(type = AmisFieldView.ViewType.jsonSchema))
         private String env;
     }
 }

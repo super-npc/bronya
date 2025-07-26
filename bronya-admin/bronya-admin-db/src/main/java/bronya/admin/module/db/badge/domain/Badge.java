@@ -8,7 +8,7 @@ import org.dromara.autotable.annotation.enums.IndexTypeEnum;
 import org.dromara.autotable.annotation.mysql.MysqlCharset;
 import org.dromara.autotable.annotation.mysql.MysqlTypeConstant;
 import org.dromara.hutool.http.meta.Method;
-import org.dromara.mpe.annotation.InsertFillTime;
+import org.dromara.mpe.autofill.annotation.InsertFillTime;
 import org.dromara.mpe.autotable.annotation.Column;
 import org.dromara.mpe.autotable.annotation.ColumnId;
 import org.dromara.mpe.autotable.annotation.Table;

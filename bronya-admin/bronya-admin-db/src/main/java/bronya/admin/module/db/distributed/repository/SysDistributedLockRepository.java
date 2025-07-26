@@ -1,13 +1,13 @@
 package bronya.admin.module.db.distributed.repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import org.dromara.mpe.base.repository.BaseRepository;
+import com.baomidou.mybatisplus.extension.repository.CrudRepository;
 import bronya.admin.module.db.distributed.domain.SysDistributedLock;
 import bronya.admin.module.db.distributed.mapper.SysDistributedLockMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SysDistributedLockRepository extends BaseRepository<SysDistributedLockMapper, SysDistributedLock> {
+public class SysDistributedLockRepository extends CrudRepository<SysDistributedLockMapper, SysDistributedLock> {
 //    public void initLockKey(String lockKey){
 //        if (this.existsLockKey(lockKey)) {
 //            return;

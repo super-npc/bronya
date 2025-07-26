@@ -32,7 +32,7 @@ import org.dromara.hutool.core.map.MapUtil;
 import org.dromara.hutool.core.reflect.FieldUtil;
 import org.dromara.hutool.core.text.StrUtil;
 import org.dromara.hutool.core.text.split.SplitUtil;
-import org.dromara.mpe.base.repository.BaseRepository;
+import com.baomidou.mybatisplus.extension.repository.CrudRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
@@ -84,7 +84,7 @@ public class BronyaAdminDbAmisController {
         Assert.notEmpty(selectValues, "请选择操作数据记录!");
         // 中间表关系处理
         AmisBeanDto middleDto = AmisTableUtil.find(req.getMiddleClass());
-        BaseRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
+        CrudRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
         if (req.getRelationshipType() == RelationshipType.connect) {
             // 已经关联的,需要断开关联
             QueryWrapper<Object> query = new QueryWrapper<>();
@@ -126,7 +126,7 @@ public class BronyaAdminDbAmisController {
 
         // 3. 真正的去查询关联值绑定的对象
         AmisBeanDto bindMany2OneClassDto = AmisTableUtil.find(entity.getSimpleName());
-        BaseRepository bindMany2OneClassService = BaseRepositoryUtil.getService(bindMany2OneClassDto.getMainClass());
+        CrudRepository bindMany2OneClassService = BaseRepositoryUtil.getService(bindMany2OneClassDto.getMainClass());
         QueryWrapper<Object> bindMany2OneClassQueryWrapper = new QueryWrapper<>();
         Object currentObjBindMany2OneClassFieldValue =
             FieldUtil.getFieldValue(currentObj, bindMany2OneViewReq.getBindMany2OneClassField());

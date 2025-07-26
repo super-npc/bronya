@@ -5,7 +5,7 @@ import com.google.common.collect.Lists;
 import lombok.experimental.UtilityClass;
 import org.dromara.hutool.core.annotation.AnnotationUtil;
 import org.dromara.hutool.core.reflect.ClassUtil;
-import org.dromara.mpe.annotation.Exclude;
+import org.dromara.mpe.autofill.annotation.Exclude;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

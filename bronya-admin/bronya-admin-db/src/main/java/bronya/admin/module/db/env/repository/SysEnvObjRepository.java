@@ -1,8 +1,8 @@
 package bronya.admin.module.db.env.repository;
 
+import com.baomidou.mybatisplus.extension.repository.CrudRepository;
 import org.dromara.hutool.core.lang.Assert;
 import org.dromara.hutool.core.text.StrUtil;
-import org.dromara.mpe.base.repository.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class SysEnvObjRepository extends BaseRepository<SysEnvObjMapper, SysEnvObj> {
+public class SysEnvObjRepository extends CrudRepository<SysEnvObjMapper, SysEnvObj> {
 
     public SysEnvObj find(Class<?> envClass){
         String objName = StrUtil.toCamelCase(envClass.getSimpleName(), '-');

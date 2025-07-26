@@ -63,7 +63,7 @@
         <redisson.version>3.33.0</redisson.version>
         <sa-token.version>1.43.0</sa-token.version>
         <mica-auto.version>3.1.4</mica-auto.version>
-        <mybatis-plus-ext.version>3.5.11-EXT834</mybatis-plus-ext.version>
+        <mybatis-plus-ext.version>3.5.12-EXT874</mybatis-plus-ext.version>
         <spring-boot-admin.version>3.4.5</spring-boot-admin.version>
         <telegrambots.verison>8.3.0</telegrambots.verison>
         <smartjavaai.version>1.0.15</smartjavaai.version>

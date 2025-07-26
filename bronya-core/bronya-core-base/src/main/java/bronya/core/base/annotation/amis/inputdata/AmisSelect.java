@@ -1,15 +1,14 @@
 package bronya.core.base.annotation.amis.inputdata;
 
-import java.lang.annotation.*;
-import java.util.List;
-
 import bronya.core.base.annotation.amis.AmisComponents;
 import bronya.core.base.annotation.amis.type.AmisApi;
 import bronya.core.base.annotation.amis.type.AmisColumnNameLabel;
 import bronya.core.base.annotation.amis.type.AmisOptions;
-import bronya.core.base.dto.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.lang.annotation.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -228,7 +227,7 @@ public class AmisSelect extends AmisComponents {
             String getUrl() default "/admin/curd/select-auto-complete";
 
             /** 数据库检索字段 */
-            String searchColumn() default BaseEntity.Fields.id;
+            String searchColumn() default "id";
         }
 
         @interface Tr {

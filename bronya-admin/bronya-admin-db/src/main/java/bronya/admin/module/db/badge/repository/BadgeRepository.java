@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
 import org.dromara.hutool.core.collection.CollUtil;
-import org.dromara.mpe.base.repository.BaseRepository;
+import com.baomidou.mybatisplus.extension.repository.CrudRepository;
 import bronya.admin.module.db.badge.domain.Badge;
 import bronya.admin.module.db.badge.mapper.BadgeMapper;
 import org.springframework.stereotype.Repository;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class BadgeRepository extends BaseRepository<BadgeMapper, Badge> {
+public class BadgeRepository extends CrudRepository<BadgeMapper, Badge> {
     private final BadgeMapper badgeMapper;
 
     public boolean readAll(Class<?> cla) {

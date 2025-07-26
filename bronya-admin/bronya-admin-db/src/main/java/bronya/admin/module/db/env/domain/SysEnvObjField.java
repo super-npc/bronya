@@ -13,7 +13,7 @@ import org.dromara.hutool.http.meta.Method;
 import org.dromara.mpe.autotable.annotation.Column;
 import org.dromara.mpe.autotable.annotation.ColumnId;
 import org.dromara.mpe.autotable.annotation.Table;
-import org.dromara.mpe.base.entity.BaseEntity;
+import bronya.core.base.dto.BaseEntity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 

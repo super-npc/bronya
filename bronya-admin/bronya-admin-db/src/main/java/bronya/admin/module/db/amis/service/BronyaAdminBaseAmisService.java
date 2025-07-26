@@ -26,7 +26,7 @@ import org.dromara.hutool.extra.spring.SpringUtil;
 import org.dromara.hutool.json.JSONUtil;
 import org.dromara.mpe.autotable.annotation.Column;
 import org.dromara.mpe.autotable.annotation.ColumnId;
-import org.dromara.mpe.base.repository.BaseRepository;
+import com.baomidou.mybatisplus.extension.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.cola.exception.BizException;
@@ -113,7 +113,7 @@ public class BronyaAdminBaseAmisService {
         Assert.isTrue(targetDynamicHandel != IConditionBuilderTarget.class,"未实现targetDynamic");
         IConditionBuilderTarget conditionBuilderTarget = SpringUtil.getBean(targetDynamicHandel);
 
-        BaseRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
+        CrudRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
         Object record = service.getById(id);
         return conditionBuilderTarget.getConditionColumns(record);
     }
@@ -161,7 +161,7 @@ public class BronyaAdminBaseAmisService {
                 dataProxy.beforeDelete(id);
             });
         }
-        BaseRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
+        CrudRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
         boolean b = service.removeByIds(Lists.newArrayList(ids));
         for (Long id : ids) {
             dataProxyService.ifPresent(dataProxy -> {
@@ -214,7 +214,7 @@ public class BronyaAdminBaseAmisService {
 
         this.rewriteVal(amisBeanDto, newBean, ActionType.add); //重写字段值
         this.checkFieldRequired(ActionType.add, amisBeanDto, newBean);// 参数校验
-        BaseRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
+        CrudRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
         boolean save = service.save(newBean);
         dataProxyService.ifPresent(dataProxy -> {
             dataProxy.afterAdd(BeanUtil.toBean(newBean, amisBeanDto.getMainClass()));
@@ -248,7 +248,7 @@ public class BronyaAdminBaseAmisService {
             // 快速编辑不需要验证字段,因为不是提供全部的字段
             this.checkFieldRequired(ActionType.edit, amisBeanDto, newBean); // 校验参数
         }
-        BaseRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
+        CrudRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
         // 先从数据库取出数据,再更新,为了做审计
         Object primaryVal = map.get(AmisFieldUtil.findPrimaryKey(amisBeanDto.getMainClass()));
         Assert.notNull(primaryVal, () -> new SysException("更新数据未传入主键"));
@@ -272,7 +272,7 @@ public class BronyaAdminBaseAmisService {
     }
 
     public Map<String, Object> view(AmisBeanDto amisBeanDto, AmisViewReq req) {
-        BaseRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
+        CrudRepository service = BaseRepositoryUtil.getService(amisBeanDto.getMainClass());
         Object record = service.getById(req.getId());
         return this.tableRecord(amisBeanDto, record);
     }
